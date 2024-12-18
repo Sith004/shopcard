@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <!-- Thêm CSS và JS của intl-tel-input -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!-- Thêm reCAPTCHA -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9d423, #ff4e50);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+            font-size: 16px;
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 15px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        .forgot-password {
+            margin: 10px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .forgot-password a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back button styles */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px; /* Adjust space above the button if needed */
+        }
+
+        .back-button {
+            padding: 15px;
+            background-color: #ff6600; /* Same color as the Đăng Nhập button */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #e65c00; /* Darker shade for hover effect */
+            transform: translateY(-2px);
+        }
+
+        .g-recaptcha {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Đăng Ký</h2>
+
+    <form action="/register" method="post">
+        <!-- Trường nhập số điện thoại với intl-tel-input -->
+        <input type="tel" id="phone" placeholder="Số điện thoại" required>
+
+        <!-- Trường nhập Gmail -->
+        <input type="email" id="email" placeholder="Email (nếu có)" required>
+
+        <!-- Trường nhập mật khẩu -->
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <span class="eye-icon" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <!-- Trường nhập xác nhận mật khẩu -->
+        <div class="password-container">
+            <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu" required>
+            <span class="eye-icon" onclick="toggleConfirmPassword()">👁️</span>
+        </div>
+
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div> <!-- Thay YOUR_SITE_KEY bằng site key của bạn -->
+
+        <button type="submit">Đăng Ký</button>
+    </form>
+
+    <!-- Quay Lại button -->
+    <div class="button-container">
+        <button class="back-button" onclick="window.history.back()">Quay Lại</button>
+    </div>
+
+    <p>Đã có tài khoản? <a href="dangnhap">Đăng Nhập</a></p>
+</div>
+
+<!-- Khởi tạo intl-tel-input cho ô nhập số điện thoại -->
+<script>
+    // Chức năng hiển thị/ẩn mật khẩu
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.setAttribute("type", type);
+    }
+
+    function toggleConfirmPassword() {
+        var confirmPasswordField = document.getElementById("confirm-password");
+        var type = confirmPasswordField.getAttribute("type") === "password" ? "text" : "password";
+        confirmPasswordField.setAttribute("type", type);
+    }
+
+    // Khởi tạo intl-tel-input cho ô nhập số điện thoại
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        initialCountry: "vn", // Quốc gia mặc định là Việt Nam
+        preferredCountries: ["vn", "us", "gb"], // Các quốc gia ưu tiên
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // Script bổ sung
+    });
+</script>
+
+</body>
+</html>

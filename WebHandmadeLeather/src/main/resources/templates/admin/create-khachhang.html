@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Thêm khách hàng</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:#E6E6FA;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* Nền container trong suốt */
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #444444;
+      margin-bottom: 30px;
+      font-size: 28px;
+      border-bottom: 2px solid #ff69b4;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: 600;
+      color: #555555;
+      text-align: left;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    input:focus {
+      border-color: #ff69b4;
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    }
+
+    /* Thông báo */
+    .message {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .success {
+      background-color: rgba(212, 237, 218, 0.9);
+      color: #155724;
+    }
+
+    .error {
+      background-color: rgba(248, 215, 218, 0.9);
+      color: #721c24;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Thêm khách hàng mới</h1>
+
+    <!-- Thông báo -->
+    <div th:if="${message}" th:classappend="${success} ? 'message success' : 'message error'">
+      <p th:text="${message}"></p>
+    </div>
+
+    <form th:action="@{/khachhang/form}" method="post">
+      <label for="makh">Mã Khách Hàng</label>
+      <input type="text" id="makh" name="makh" required>
+
+      <label for="tenkh">Tên Khách Hàng</label>
+      <input type="text" id="tenkh" name="tenkh" required>
+
+      <label for="diachi">Địa chỉ</label>
+      <input type="text" id="diachi" name="diachi">
+
+      <label for="sdt">Số Điện Thoại</label>
+      <input type="text" id="sdt" name="sdt">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+
+      <button type="submit">Thêm</button>
+    </form>
+
+    <!-- Chuyển hướng sau 3 giây nếu thành công -->
+    <script th:if="${success}" type="text/javascript">
+      setTimeout(() => {
+        window.location.href = '/khachhang'; // Điều hướng về trang khách hàng
+      }, 3000);
+    </script>
+
+  </div>
+</body>
+</html>

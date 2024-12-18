@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <metaname="description" content="Trang web bán thẻ OnePiece chính hãng, Giá rẻ">
+    <metaname="keywwords" content="OnePiece, Thẻ OnePiece, card OnePiece, mua, bán thẻ OnePiece, giá thẻ OnePiece, check OnePiece">
+    <title>Thẻ OnePiece chính hãng</title>
+    <style>/* CSS cho toàn bộ trang */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        header .logo img {
+            width: 50px;
+            margin-right: 10px;
+        }
+        
+        header .logo span {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .header-links {
+            display: flex;
+        }
+        
+        .header-links li {
+            list-style: none;
+            margin-right: 20px;
+        }
+        
+        .header-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        header ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        /* Main Content */
+        main {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .main-content {
+            flex: 3;
+            margin-right: 20px;
+        }
+        
+        .article-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .article-header p {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .banner-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+        
+        /* Đặt ảnh có thể click */
+        .image-link {
+            text-decoration: none;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05); /* Phóng to ảnh khi hover */
+        }
+        
+        .content-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Nền mờ đen cho phần chữ */
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .image-container:hover .content-title {
+            background-color: rgba(0, 0, 0, 0.9); /* Làm nền mờ đen đậm hơn khi hover */
+        }
+        
+        /* Grid Sets */
+        .sets {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .set {
+            text-align: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .set img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .set p {
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        /* Tìm kiếm */
+        input[type="search"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index" class="logo">Store OnePiece Vjp Pro</a>
+            <ul>
+                <li><a href="sanpham">Bộ</a></li>
+                <li><a href="sanphamniemphong">Sản phẩm niêm phong</a></li>
+                <li><a href="bosuutap">Bộ sưu tập</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main>
+        <div class="main-content">
+            <div class="article-header">
+                <h1>Những Thẻ Bán Chạy Nhất Trong Store OnePiece Vjp Pro</h1>
+                <div class="author-info">
+                    <p>Bởi Store OnePiece Vjp Pro</p>
+                </div>
+            </div>
+			<div class="article-content">
+			    <p>Trong thế giới thẻ One Piece, sự yêu thích và nhu cầu của người chơi ngày càng tăng cao, đặc biệt là trong cộng đồng người hâm mộ tại Việt Nam. Một trong những nền tảng nổi bật phục vụ cho nhu cầu này là Store One Piece Vjp Pro - nơi cung cấp thẻ One Piece chính hãng với đa dạng sản phẩm và mức giá hợp lý. Trong bài viết này, chúng ta sẽ cùng điểm qua những thẻ bán chạy nhất trong Store One Piece Vjp Pro và lý do tạo nên sức hấp dẫn của chúng.</p>
+			    
+			    <h2>1. Monkey.D.Luffy (Manga)</h2>
+			    <p>Monkey.D.Luffy (Manga) là một trong những thẻ được yêu thích nhất trên Haepoke. Với thiết kế bắt mắt và sức mạnh vượt trội trong các trận đấu, thẻ này không chỉ thu hút các game thủ mà còn cả những nhà sưu tập. Thẻ này thường xuất hiện trong các bộ bài chiến thuật mạnh mẽ, giúp người chơi dễ dàng giành chiến thắng trong các trận đấu.</p>
+
+			    <h2>2. Kaido (Alternate Art)</h2>
+			    <p>Kaido (Alternate Art), với hình tượng mạnh mẽ và khả năng chiến đấu đỉnh cao, luôn giữ vững vị trí trong lòng người hâm mộ. Thẻ Kaido không chỉ ấn tượng mà còn mang lại giá trị cao trong các trận đấu nhờ vào sức mạnh tấn công phi thường. Với sự độc đáo của mình, Kaido (Alternate Art) thường xuyên nằm trong danh sách bán chạy nhất của Store One Piece Vjp Pro.</p>
+
+			    <h2>3. Nefeltari Vivi (Alternate Art)</h2>
+			    <p>Nefeltari Vivi (Alternate Art), người kế vị đáng kính của Alabasta, là một thẻ không thể thiếu trong bộ sưu tập của bất kỳ người chơi nào. Với khả năng hỗ trợ chiến lược và giúp điều chỉnh tài nguyên, thẻ này mang lại lợi thế lớn cho người chơi. Sự hấp dẫn của Nefeltari Vivi không chỉ đến từ khả năng trong game mà còn từ thiết kế tinh tế và sáng tạo.</p>
+
+			    <h2>4. Shanks (Alternate Art)</h2>
+			    <p>Shanks (Alternate Art) là một thẻ thú vị với khả năng tấn công mạnh mẽ và kỹ thuật chiến đấu đẹp mắt. Sự kết hợp giữa thiết kế ấn tượng và chiến thuật tấn công linh hoạt khiến thẻ này trở thành lựa chọn phổ biến trong các trận đấu. Người chơi thường tìm kiếm Shanks (Alternate Art) để nâng cao sức mạnh bộ bài của mình.</p>
+
+			    <h2>5. Charlotte Katakuri (Reprint)</h2>
+			    <p>Charlotte Katakuri (Reprint) là một thẻ đẳng cấp với khả năng dự đoán và kiểm soát cục diện trận đấu. Với năng lực quan sát tương lai và chiến thuật sắc bén, thẻ này mang đến ưu thế vượt trội cho người chơi. Ngoài ra, thiết kế của thẻ phản ánh sự mạnh mẽ và tinh tế của nhân vật, khiến nó trở thành một lựa chọn hàng đầu cho cả các nhà sưu tập và game thủ chuyên nghiệp.</p>
+
+			    <h2>6. Roronoa Zoro (Manga)</h2>
+			    <p>Roronoa Zoro (Manga), với hình tượng kiếm sĩ huyền thoại, là một lựa chọn tuyệt vời cho các game thủ. Thẻ này không chỉ nổi bật với sức mạnh tấn công mà còn là một trong những thẻ được săn đón nhất bởi cả nhà sưu tập và người chơi chuyên nghiệp.</p>
+			</div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Nội Dung Phổ Biến</h3>
+            <ul>
+                <li>
+                    <a href="" class="image-link">
+                        <div class="image-container">
+                            <img src="https://cardotaku.com/cdn/shop/files/op-05-one-piece-card-game-booster-pack-awakening-of-the-new-era-booster.png?v=1690705616&width=1200" alt="bài hot">
+                            <div class="content-title">
+                                <p>Bộ bài tốt nhất Meta hiện nay</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="image-link">
+                        <div class="image-container">
+                            <img src="https://tcgplayer-cdn.tcgplayer.com/product/545918_in_1000x1000.jpg" alt="giá tăng">
+                            <div class="content-title">
+                                <p>Giá tăng đột biến lớn nhất hiện nay</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="image-link">
+                        <div class="image-container">
+                            <img src="https://tcgplayer-cdn.tcgplayer.com/product/597066_in_1000x1000.jpg" alt="bài tuỵt vời">
+                            <div class="content-title">
+                                <p>Bộ bài tuyệt vời nhất hiện nay</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="image-link">
+                        <div class="image-container">
+                            <img src="https://cdn.archonia.com/images/1-104194758-1-1-original1/one-piece-card-game-premium-card-collection-25th-edition-en.jpg" alt="Nhiều người sử dụng">
+                            <div class="content-title">
+                                <p>Bộ bài được nhiều người sử dụng nhất hiện nay</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </main>
+
+</body>
+</html>

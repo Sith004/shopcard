@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Sửa Nhà Cung Cấp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sửa Nhà cung cấp</h1>
+   <form th:action="@{/nhacungcap/Nhacungcap-edit}" method="post">
+    <label for="mancc">Mã Nhà Cung Cấp</label>
+    <input type="text" id="mancc" th:value="${nhacungcap.mancc}" name="mancc" required>
+
+    <label for="tenncc">Tên Nhà Cung Cấp</label>
+    <input type="text" id="tenncc" th:value="${nhacungcap.tenncc}" name="tenncc" required>
+
+    <label for="thongtinlienlac">Thông Tin Liên Lạc</label>
+    <input type="text" id="thongtinlienlac" th:value="${nhacungcap.thongtinlienlac}" name="thongtinlienlac">
+
+    <button type="submit">Lưu Thay Đổi</button>
+</form>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Danh sách tài khoản</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    a.button:hover {
+      background-color: #45a049;
+    }
+
+    .action-buttons a {
+      margin: 0 5px;
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .action-buttons a.delete {
+      background-color: #e74c3c;
+    }
+
+    .action-buttons a:hover {
+      opacity: 0.9;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-container input[type="text"] {
+      padding: 10px;
+      width: 50%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h1>Danh sách tài khoản</h1>
+
+<div class="search-container">
+  <input type="text" placeholder="Nhập mã đăng nhập..." id="searchInput">
+  <button onclick="search()">Tìm kiếm</button>
+</div>
+
+<table>
+  <tr>
+    <th>Mã Đăng Nhập</th>
+    <th>Mật Khẩu</th>
+    <th>Hành động</th>
+  </tr>
+  <tr th:each="taikhoan : ${taikhoanList}">
+    <td th:text="${taikhoan.maDangNhap}"></td>
+    <td th:text="${taikhoan.matKhau}"></td>
+    <td class="action-buttons">
+    
+      <a th:href="@{/taikhoan/taikhoan-edit/{maDangNhap}(maDangNhap=${taikhoan.maDangNhap})}" class="edit">Sửa</a>
+      <a th:href="@{/taikhoan/taikhoan-delete/{maDangNhap}(maDangNhap=${taikhoan.maDangNhap})}" class="delete"
+         onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?');">Xóa</a>
+    </td>
+  </tr>
+</table>
+
+<a th:href="@{/taikhoan/formtk}" class="button">Thêm tài khoản</a>
+
+<script>
+  function search() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('table tr:not(:first-child)');
+
+    rows.forEach(row => {
+      const columns = row.querySelectorAll('td');
+      const maDangNhap = columns[0].innerText.toLowerCase();
+      row.style.display = maDangNhap.includes(input) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+

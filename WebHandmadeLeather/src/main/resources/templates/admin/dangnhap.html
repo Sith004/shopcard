@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Admin</title>
+    <style>
+        /* Reset CSS */
+        body, h1, form, p, input, button, label {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e90ff, #87cefa);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #1e90ff;
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #104e8b;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        p span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/dangnhapadmin" method="POST">
+        <h1>Đăng Nhập Admin</h1>
+        <label for="maDangNhap">Mã đăng nhập:</label>
+        <input type="text" id="maDangNhap" name="maDangNhap" required>
+
+        <label for="matKhau">Mật khẩu:</label>
+        <input type="password" id="matKhau" name="matKhau" required>
+
+        <button type="submit">Đăng nhập</button>
+
+        <!-- Hiển thị lỗi nếu có -->
+        <p style="color: red;">
+            <span th:text="${error}"></span>
+        </p>
+    </form>
+</body>
+</html>

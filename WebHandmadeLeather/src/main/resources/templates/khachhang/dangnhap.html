@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <!-- Thêm CSS và JS của intl-tel-input -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9d423, #ff4e50);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+            font-size: 16px;
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 15px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        .forgot-password,
+        .login-sms {
+            margin: 10px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .forgot-password a,
+        .login-sms a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover,
+        .login-sms a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .social-button {
+            padding: 10px;
+            background-color: #e7e7e7;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            flex: 1;
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .tab-links {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .tab-link {
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .tab-link.active {
+            color: #ff6600;
+            border-bottom: 2px solid #ff6600;
+        }
+
+        .qr-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            margin-right: 10px;
+        }
+
+        .phone-code {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-container input {
+            width: 100%;
+            padding-right: 50px; /* Để chừa chỗ cho icon mắt */
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        /* Back button styles */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px; /* Adjust space above the button if needed */
+        }
+
+        .back-button {
+            padding: 15px;
+            background-color: #ff6600; /* Same color as the Đăng Nhập button */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #e65c00; /* Darker shade for hover effect */
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: red;
+            display: none; /* Ẩn thông báo lỗi mặc định */
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="tab-links">
+        <div class="tab-link active"><span></span>Đăng Nhập</div>
+    </div>
+
+    <form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
+        <input type="tel" id="phone" placeholder="Số điện thoại" required>
+
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <span class="eye-icon" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <div class="forgot-password">
+            <a href="#">Quên mật khẩu?</a>
+        </div>
+
+        <button type="submit">Đăng Nhập</button>
+    </form>
+
+    <div class="error-message" id="errorMessage">Tên đăng nhập hoặc mật khẩu không đúng.</div>
+
+    <!-- Quay Lại button -->
+    <div class="button-container">
+        <button class="back-button" onclick="window.history.back()">Quay Lại</button>
+    </div>
+
+    <p>Bạn chưa có tài khoản? <a href="dangky">Đăng ký</a></p>
+
+    <div class="social-login">
+        <button class="social-button" onclick="loginWithFacebook()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+            Facebook
+        </button>
+        <button class="social-button" onclick="loginWithGoogle()">
+            <img src="/static/java/Google__G__logo.svg.webp" alt="Google Logo">
+            Google
+        </button>
+    </div>
+
+</div>
+
+<!-- Khởi tạo intl-tel-input cho ô nhập số điện thoại -->
+<script>
+    // Chức năng hiển thị/ẩn mật khẩu
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.setAttribute("type", type);
+    }
+
+    // Khởi tạo intl-tel-input cho ô nhập số điện thoại
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        initialCountry: "vn", // Quốc gia mặc định là Việt Nam
+        preferredCountries: ["vn", "us", "gb"], // Các quốc gia ưu tiên
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // Script bổ sung
+    });
+
+    function validateForm() {
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+
+        // Gọi API để xác thực
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ phone: phone, password: password })
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Nếu đăng nhập thành công, chuyển hướng tới trang chính
+                    window.location.href = "/"; // hoặc trang bạn muốn
+                } else {
+                    // Nếu đăng nhập không thành công, hiển thị thông báo lỗi
+                    document.getElementById("errorMessage").style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("errorMessage").style.display = "block";
+            });
+
+        // Ngăn chặn form gửi đi theo cách thông thường
+        return false;
+    }
+
+    function loginWithFacebook() {
+        window.location.href = "https://www.facebook.com/v10.0/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token";
+    }
+
+    function loginWithGoogle() {
+        window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=email%20profile";
+    }
+</script>
+</body>
+</html>

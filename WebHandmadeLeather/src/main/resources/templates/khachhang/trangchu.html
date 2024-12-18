@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <metaname="description" content="Trang web bán thẻ OnePiece chính hãng, Giá rẻ">
+    <metaname="keywwords" content="OnePiece, Thẻ OnePiece, card OnePiece, mua, bán thẻ OnePiece, giá thẻ OnePiece, check OnePiece">
+    <title>Thẻ OnePiece chính hãng</title>
+   <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Nav và phần điều hướng */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+nav .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons .sign-in-btn, 
+.auth-buttons .pro-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.sign-in-btn {
+    background-color: #333;
+}
+
+.pro-btn {
+    background-color: #e02424;
+}
+
+/* Logo và thanh tìm kiếm */
+.logo-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    background-color: #f9f9f9;
+}
+
+.logo-search .logo-img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.search-bar {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Banner styling */
+.banner {
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.banner-content {
+    max-width: 60%;
+}
+
+.banner-content h1 {
+    font-size: 40px;
+    margin: 0;
+    color: #227748;
+}
+
+.banner-content p {
+    font-size: 40px;
+    margin: 10px 0 20px;
+}
+
+.banner-button {
+    background-color: #00c089;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.banner-image {
+    display: flex;
+    gap: 20px;
+}
+
+.banner-image img {
+    width: 350px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Các phần khác trong CSS ban đầu */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Popup và các nút */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+
+.popup-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.popup-header p {
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.login-btn-header {
+    background-color: #f00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+/* Thanh tìm kiếm */
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Image và các nút */
+.image-container {
+    position: relative;
+}
+
+.circle-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: #607D8B;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.circle-button:hover {
+    background-color: #455A64;
+}
+   </style>
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index" class="logo">Store OnePiece Vjp Pro</a>
+            <ul>
+                <li><a href="sanpham">Bộ</a></li>
+                <li><a href="sanphamniemphong">Sản phẩm niêm phong</a></li>
+                <li><a href="bosuutap">Bộ sưu tập</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="dangnhap">
+                    <button class="sign-in-btn">Đăng nhập</button>
+                </a>
+            </div>
+        </nav>
+        <div class="logo-search">
+            <img src="https://th.bing.com/th/id/OIP.ixW0_jOHEP-J3MzjfY_WwQHaE8?rs=1&pid=ImgDetMain" alt="OnePiece Logo" class="logo-img">
+            <input type="text" placeholder="Tìm thẻ...." class="search-bar" id="searchInput">
+            <div id="searchResults"></div> 
+        </div>
+    </header>
+    <div class="banner">
+        <div class="banner-content">
+            <h1>Store One Piece Vjp Pro</h1>
+            <p>Những thẻ One Piece hot nhất hiện nay</p>
+            <a href="http://localhost:8080/xemngay" class="banner-button">Xem ngay</a>
+        </div>
+        <div class="banner-image">
+            <img src="https://onepiece-cards.com/cdn/shop/files/onepiecedisplayop05enanglais.webp?v=1694778559&width=713" alt="OnePiece05">
+            <img src="https://www.pokemillon.com/cdn/shop/files/70F4FF91-3FEF-42EA-A4EE-A1F9690909C7_530x.jpg?v=1704387462" alt="OnePiece09">
+        </div>
+    </div>
+    
+    <div class="card-container">
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Monkey_D_Luffy.html" >
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/587963_in_1000x1000.jpg" alt="Monkey.D.Luffy">
+                </a>
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Monkey.D.Luffy (Manga)</h3>
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Monkey.D.Luffy</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/587963_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Kaido.html" >
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/593480_in_1000x1000.jpg" alt="Kaido">
+                </a>
+                <!-- Nút tròn popup ở góc phải trên ảnh -->
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Kaido (Alternate Art)</h3>
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Kaido (Alternate Art)</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/593480_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Vivi.html" >
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/515333_in_1000x1000.jpg" alt="Vivi">
+                </a>
+                <!-- Nút tròn popup ở góc phải trên ảnh -->
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Nefeltari Vivi (Alternate Art)</h3>
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Nefeltari Vivi</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/515333_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Shanks.html" >
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/586194_in_1000x1000.jpg" alt="Shanks">
+                </a>
+                <!-- Nút tròn popup ở góc phải trên ảnh -->
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Shanks (Alternate Art)</h3>
+            
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Shanks</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/586194_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Charlotte Katakuri.html">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/594341_in_1000x1000.jpg" alt="Charlotte Katakuri">
+                </a>
+                <!-- Nút tròn popup ở góc phải trên ảnh -->
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Charlotte Katakuri (Reprint)</h3>
+            
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Charlotte Katakuri</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/594341_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image-container">
+                <a href="tronganh/Roronoa_Zoro.html">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/product/587964_in_1000x1000.jpg" alt="Roronoa_Zoro">
+                </a>
+                <!-- Nút tròn popup ở góc phải trên ảnh -->
+                <button class="popupBtn circle-button">+</button>
+            </div>
+            <h3>Roronoa Zoro (Manga)</h3>
+            
+        </div>
+    
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-header">
+                    <h3>Roronoa Zoro (Manga)</h3>
+                </div>
+                <div class="form-group">
+                    <img id="card-image" src="https://tcgplayer-cdn.tcgplayer.com/product/587964_in_1000x1000.jpg" alt="Card Image" style="width:100%; max-width:100px;">     
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="số lượng" value="1" min="1">
+                </div>
+                <div class="form-group price-group">
+                    <label for="unit-price">Đơn giá (VN)</label>
+                    <input type="text" id="unit-price">
+                    <label for="use-market-price" class="checkbox-label">
+                        <input type="checkbox" id="use-market-price">
+                        Use market price
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày</label>
+                    <input type="date" id="date" value="2024-10-16">
+                </div>
+                <div class="form-actions">
+                    <button class="btn-primary">Thêm vào danh sách</button>
+                    <button class="btn-secondary">Thêm thẻ</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <main>
+        <section class="card-section">
+            <h2>Starter Deck</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/StarterDeck1StrawHatCrew.png" alt="Straw Hat Crew">
+                    <p>Starter Deck 1: Straw Hat Crew</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/StarterDeck2WorstGeneration.png" alt="Worst Generation">
+                    <p>Starter Deck 2: Worst Generation</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/StarterDeck3TheSevenWarlordsofTheSea.png" alt="The Seven Warlords of The Sea">
+                    <p>Starter Deck 3: The Seven Warlords of The Sea</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/StarterDeck4AnimalKingdomPirates.png" alt="Animal Kingdom Pirates">
+                    <p>Starter Deck 4: Animal Kingdom Pirates</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/StarterDeck5FilmEdition.png" alt="Film Edition">
+                    <p>Starter Deck 5: Film Edition</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-section">
+            <h2>Other decks</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/EmperorsintheNewWorld.png" alt="Emperors in the New World">
+                    <p>Emperors in the New World</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/TwoLegends.png" alt="Two Legends">
+                    <p>Two Legends</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/AwakeningoftheNewEra.png" alt="Awakening of the New Era">
+                    <p>Awakening of the New Era</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/KingdomsofIntrigue.png" alt="Kingdoms of Intrigue">
+                    <p>Kingdoms of Intrigue</p>
+                </div>
+                <div class="card">
+                    <img src="https://tcgplayer-cdn.tcgplayer.com/set_icon/PillarsofStrength.png" alt="Pillars of Strength">
+                    <p>Pillars of Strength</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+        
+    </div>
+<script>const popups = document.querySelectorAll('.popup');
+const popupBtns = document.querySelectorAll('.popupBtn');
+const closeBtns = document.querySelectorAll('.close-btn');
+
+// Hiển thị popup khi nhấn nút dấu cộng cho từng nút
+popupBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        popups[index].style.display = 'block';
+    });
+});
+
+// Đóng popup khi nhấn nút "x"
+closeBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        popups[index].style.display = 'none';
+    });
+});
+
+// Đóng popup khi nhấn bên ngoài form
+window.addEventListener('click', (event) => {
+    popups.forEach((popup) => {
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
+
+    // Hàm tìm kiếm
+    function searchCards() {
+        // Lấy giá trị từ ô input tìm kiếm
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        // Lấy tất cả các thẻ card
+        const cards = document.querySelectorAll('.card');
+
+        // Lặp qua tất cả các thẻ card
+        cards.forEach(card => {
+            // Lấy tiêu đề (h3) và mô tả (p) trong thẻ card
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            const description = card.querySelector('p').innerText.toLowerCase();
+
+            // Kiểm tra nếu tiêu đề hoặc mô tả chứa từ khóa tìm kiếm
+            if (title.includes(searchInput) || description.includes(searchInput)) {
+                // Hiển thị thẻ card nếu tìm thấy kết quả phù hợp
+                card.style.display = 'block';
+            } else {
+                // Ẩn thẻ card nếu không phù hợp
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Thêm sự kiện cho ô input tìm kiếm
+    document.getElementById('searchInput').addEventListener('input', searchCards);
+
+	</script>
+</body>
+</html>

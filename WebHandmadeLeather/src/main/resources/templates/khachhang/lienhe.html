@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ & Phản Hồi - Shop Thời Trang</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fffbea;
+    }
+
+    /* Phần header */
+    .header {
+      background-color: #333;
+      color: #ffcc00;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .nav {
+      margin-top: 10px;
+    }
+
+    .nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+      color: #ffcc00;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #ffeb99;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      text-align: center;
+      color: #b8860b;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #b8860b;
+      display: block; /* Đảm bảo label chiếm cả chiều rộng */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #fff;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #ffcc00;
+      outline: none;
+    }
+
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between; /* Đặt các nút ở hai đầu */
+    }
+
+    .btn-submit, .btn-back {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      flex: 1; /* Các nút chiếm cùng chiều rộng */
+      margin: 0 5px; /* Khoảng cách giữa các nút */
+    }
+
+    .btn-submit {
+      background-color: #ffcc00;
+      color: white;
+    }
+
+    .btn-submit:hover {
+      background-color: #e6b800;
+    }
+
+    .btn-back {
+      background-color: #e6b800;
+      color: white;
+    }
+
+    .btn-back:hover {
+      background-color: #d1a900;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      color: #b8860b;
+    }
+
+    .contact-info a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Phần thông báo */
+    .notification {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header, .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .btn-submit, .btn-back {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .contact-info p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+  <h1>Cửa Hàng HaePoke</h1>
+  <div class="nav">
+    <a href="index">Trang chủ</a>
+    <a href="gioithieu">Giới thiệu</a>
+    <a href="sanpham">Bộ</a>
+    <a href="#">Liên hệ</a>
+  </div>
+</div>
+
+<!-- Nội dung chính -->
+<div class="container">
+  <h1>Liên Hệ & Phản Hồi</h1>
+  <p>Chúng tôi luôn sẵn sàng lắng nghe ý kiến và phản hồi của bạn!</p>
+
+  <form onsubmit="return showConfirmation();" action="/submit-feedback" method="POST">
+    <div class="form-group">
+      <label for="name">Họ và tên</label>
+      <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Nội dung phản hồi</label>
+      <textarea id="message" name="message" placeholder="Nhập nội dung phản hồi của bạn" required></textarea>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn-back" onclick="window.history.back();">Quay lại</button>
+      <button type="submit" class="btn-submit">Gửi phản hồi</button>
+    </div>
+  </form>
+
+  <div class="notification" id="notification">
+    Phản hồi của bạn đã được ghi nhận. Cảm ơn bạn đã đóng góp ý kiến!
+  </div>
+
+  <div class="contact-info">
+    <h2>Thông tin liên hệ</h2>
+    <p>Shop Thời Trang XYZ</p>
+    <p>Email: <a href="mailto:info@shopthoitrang.com">info@shopthoitrang.com</a></p>
+    <p>Điện thoại: 0368221867</p>
+    <p>Địa chỉ: 123 Đường Bình Long, Quận Bình Tân TP. HCM</p>
+  </div>
+</div>
+
+<script>
+  function showConfirmation() {
+    document.getElementById("notification").style.display = "block"; // Hiện thông báo
+    setTimeout(() => {
+      document.getElementById("notification").style.display = "none"; // Ẩn thông báo sau 5 giây
+    }, 5000);
+    return true; // Cho phép gửi biểu mẫu sau khi hiển thị thông báo
+  }
+</script>
+</body>
+</html>
